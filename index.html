@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>STUDIO SAVINRO</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -12,12 +12,13 @@
       background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
       color: white;
       line-height: 1.6;
+      scroll-behavior: smooth;
     }
     header {
       position: relative;
       text-align: center;
       padding: 5rem 1rem;
-      background: url(assets/bg.jpg) center/cover no-repeat;
+      background: url('assets/bg.jpg') center/cover no-repeat;
       color: white;
     }
     header::before {
@@ -26,6 +27,7 @@
       top: 0; left: 0;
       width: 100%; height: 100%;
       background: rgba(0,0,0,0.6);
+      z-index: 0;
     }
     header h1, nav {
       position: relative;
@@ -45,6 +47,7 @@
       justify-content: center;
       gap: 1.5rem;
       margin-top: 1rem;
+      z-index: 1;
     }
     nav a {
       color: white;
@@ -52,29 +55,38 @@
       font-weight: 600;
       transition: color 0.3s;
     }
-    nav a:hover { color: #00f5ff; }
+    nav a:hover {
+      color: #00f5ff;
+    }
 
     section {
       padding: 4rem 10%;
       text-align: center;
     }
     section h2 {
-      font-size: 2.5rem;
+      font-size: 2.8rem;
       margin-bottom: 1rem;
       color: #00f5ff;
+      text-transform: uppercase;
+      letter-spacing: 2px;
     }
     .btn {
       display: inline-block;
-      margin-top: 1rem;
-      padding: 0.8rem 2rem;
+      margin-top: 1.5rem;
+      padding: 0.9rem 2.5rem;
       background: #00f5ff;
       color: black;
       border-radius: 30px;
       text-decoration: none;
-      font-weight: bold;
-      transition: background 0.3s;
+      font-weight: 700;
+      font-size: 1.1rem;
+      box-shadow: 0 0 10px #00f5ff;
+      transition: background 0.3s, transform 0.3s;
     }
-    .btn:hover { background: #00c7d4; }
+    .btn:hover {
+      background: #00c7d4;
+      transform: scale(1.05);
+    }
 
     .grid {
       display: grid;
@@ -83,32 +95,81 @@
       margin-top: 2rem;
     }
     .card {
-      background: rgba(255,255,255,0.05);
+      background: rgba(255, 255, 255, 0.05);
       border-radius: 15px;
       padding: 1.5rem;
-      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
       backdrop-filter: blur(8px);
       transition: transform 0.3s, box-shadow 0.3s;
     }
     .card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 0 20px rgba(0, 245, 255, 0.4);
+      box-shadow: 0 0 20px rgba(0, 245, 255, 0.5);
     }
     .icon {
       font-size: 2rem;
       margin-bottom: 0.5rem;
       color: #00f5ff;
     }
+
+    /* Gallery styles */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .gallery-grid img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0, 245, 255, 0.3);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+    .gallery-grid img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #00f5ff;
+    }
+
+    /* Google map container */
+    .map-container {
+      margin-top: 2rem;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(0, 245, 255, 0.4);
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    iframe {
+      width: 100%;
+      height: 400px;
+      border: none;
+    }
+
     footer {
       text-align: center;
       padding: 1.5rem;
       background: #111;
       font-size: 0.9rem;
       color: #aaa;
+      margin-top: 4rem;
+    }
+
+    @media (max-width: 768px) {
+      section {
+        padding: 3rem 5%;
+      }
+      header h1 {
+        font-size: 2.4rem;
+      }
     }
   </style>
 </head>
 <body>
+
   <header>
     <h1>STUDIO SAVINRO</h1>
     <nav>
@@ -122,18 +183,36 @@
 
   <section id="about">
     <h2>About Us</h2>
-    <p>Welcome to STUDIO SAVINRO — your creative hub for professional music production, recording, and mixing. We bring your sound to life with passion and perfection.</p>
+    <p>
+      At <strong>STUDIO SAVINRO</strong>, we are passionate about turning your musical ideas into reality. With state-of-the-art equipment and a team of skilled professionals, we provide top-notch music recording, beat production, video editing, commercial video dubbing, and more.<br /><br />
+      Whether you're an artist, producer, or brand, we offer personalized services to bring your vision to life with creativity and precision.
+    </p>
   </section>
 
   <section id="services">
     <h2>Our Services</h2>
-    <p>🎵 Professional Recording <br> 🎚️ Mixing & Mastering <br> 🎤 Vocal Tuning <br> 🎼 Music Composition</p>
+    <div class="grid">
+      <div class="card"><div class="icon">🎤</div><strong>Music Recording</strong><br />Capture your best sound with our professional recording setups.</div>
+      <div class="card"><div class="icon">🎧</div><strong>Beat Producing</strong><br />Custom beats crafted to fit your style and mood.</div>
+      <div class="card"><div class="icon">🎬</div><strong>Video Editing</strong><br />High-quality editing to make your videos shine.</div>
+      <div class="card"><div class="icon">🎙️</div><strong>Commercial Video Dubbing</strong><br />Clear, professional voice-overs for your commercials.</div>
+      <div class="card"><div class="icon">🎚️</div><strong>Mixing & Mastering</strong><br />Get your tracks polished to perfection.</div>
+    </div>
     <a href="#contact" class="btn">Book a Session</a>
   </section>
 
   <section id="gallery">
     <h2>Gallery</h2>
-    <p>Our creative space and past projects will be showcased here.</p>
+    <p>Check out some moments from our previous productions with renowned Sri Lankan artists.</p>
+    <div class="gallery-grid">
+      <img src="assets/a.jpg" alt="Recording session with famous artist 1" />
+      <img src="assets/b.jpg" alt="Recording session with famous artist 2" />
+      <img src="assets/c.jpg" alt="Studio mixing board" />
+      <img src="assets/d.jpg" alt="Beat producing session" />
+      <img src="assets/e.jpg" alt="Video editing workspace" />
+      
+      <!-- Replace above image URLs with your actual images -->
+    </div>
   </section>
 
   <section id="facilities">
@@ -158,12 +237,24 @@
 
   <section id="contact">
     <h2>Contact Us</h2>
-    <p>Email: <a href="mailto:studiosavinro@gmail.com">studiosavinro@gmail.com</a></p>
+    <p>Email: <a href="mailto:studiosavinro@gmail.com" style="color:#00f5ff;">studiosavinro@gmail.com</a></p>
     <p>Phone: +94 77 123 4567</p>
+    
+    <div class="map-container" style="margin-top:2rem;">
+      <!-- Replace the src below with your actual Google Maps embed link -->
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3958.3423062483785!2d79.86024531477567!3d6.927078195015564!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae25b2d975784a3%3A0x447fa2a8c7a87b08!2sColombo%2C%20Sri%20Lanka!5e0!3m2!1sen!2sus!4v1691673840123!5m2!1sen!2sus"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        aria-label="Studio Savinro location on map"
+      ></iframe>
+    </div>
   </section>
 
   <footer>
     &copy; 2025 STUDIO SAVINRO | All Rights Reserved
   </footer>
+
 </body>
 </html>
