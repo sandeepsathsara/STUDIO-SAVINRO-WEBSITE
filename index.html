@@ -1,153 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>STUDIO SAVINRO</title>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-<style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    font-family: 'Poppins', sans-serif;
-    background: #0d0d0d;
-    color: #fff;
-    overflow-x: hidden;
-  }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>STUDIO SAVINRO</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+      color: white;
+      line-height: 1.6;
+    }
+    header {
+      position: relative;
+      text-align: center;
+      padding: 5rem 1rem;
+      background: url(assets/bg.jpg) center/cover no-repeat;
+      color: white;
+    }
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+    }
+    header h1, nav {
+      position: relative;
+      z-index: 1;
+    }
+    header h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3.5rem;
+      letter-spacing: 3px;
+      background: linear-gradient(45deg, #9400ff, #00f5ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 20px rgba(0, 245, 255, 0.8);
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+    nav a:hover { color: #00f5ff; }
 
-  /* Background animation for body */
-  body::before {
-    content: '';
-    position: fixed;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle at 20% 20%, rgba(148,0,255,0.15), transparent 40%),
-                radial-gradient(circle at 80% 30%, rgba(0,245,255,0.1), transparent 40%),
-                radial-gradient(circle at 50% 80%, rgba(255,0,128,0.15), transparent 40%);
-    animation: moveBg 15s infinite alternate ease-in-out;
-    z-index: -2;
-  }
-  @keyframes moveBg {
-    0% { transform: translate(0, 0); }
-    100% { transform: translate(-10%, -10%); }
-  }
+    section {
+      padding: 4rem 10%;
+      text-align: center;
+    }
+    section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #00f5ff;
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.8rem 2rem;
+      background: #00f5ff;
+      color: black;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    .btn:hover { background: #00c7d4; }
 
-  /* Header with background image */
-  header {
-    position: relative;
-    text-align: center;
-    padding: 4rem 1rem;
-    background: url('studio-bg.jpg') center/cover no-repeat;
-    color: white;
-    overflow: hidden;
-  }
-  header::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.6);
-    z-index: 0;
-  }
-  header h1, nav {
-    position: relative;
-    z-index: 1;
-  }
-  header h1 {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 3rem;
-    letter-spacing: 3px;
-    background: linear-gradient(45deg, #9400ff, #00f5ff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 10px rgba(0, 245, 255, 0.8);
-  }
-  nav {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-    margin-top: 1rem;
-  }
-  nav a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: 600;
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    transition: background 0.3s;
-  }
-  nav a:hover {
-    background: rgba(255,255,255,0.1);
-  }
-
-  /* Section styles */
-  section {
-    padding: 4rem 10%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 1s ease, transform 1s ease;
-  }
-  section.show {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* Glassmorphism Card */
-  .card {
-    background: rgba(255,255,255,0.05);
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
-    padding: 2rem;
-    max-width: 800px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.3);
-    border: 1px solid rgba(255,255,255,0.1);
-  }
-  section h2 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    background: linear-gradient(45deg, #9400ff, #00f5ff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  /* Button */
-  .btn {
-    display: inline-block;
-    margin-top: 1.5rem;
-    padding: 0.8rem 2rem;
-    background: linear-gradient(45deg, #9400ff, #00f5ff);
-    color: white;
-    border-radius: 30px;
-    text-decoration: none;
-    font-weight: bold;
-    box-shadow: 0 0 15px rgba(0, 245, 255, 0.5);
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
-  .btn:hover { 
-    transform: scale(1.05);
-    box-shadow: 0 0 25px rgba(0, 245, 255, 0.8);
-  }
-
-  /* Footer */
-  footer {
-    text-align: center;
-    padding: 1.5rem;
-    background: rgba(255,255,255,0.05);
-    font-size: 0.9rem;
-    color: #aaa;
-  }
-
-  /* Responsive */
-  @media (max-width: 768px) {
-    section { padding: 3rem 5%; }
-    header h1 { font-size: 2.2rem; }
-  }
-</style>
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .card {
+      background: rgba(255,255,255,0.05);
+      border-radius: 15px;
+      padding: 1.5rem;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+      backdrop-filter: blur(8px);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 20px rgba(0, 245, 255, 0.4);
+    }
+    .icon {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      color: #00f5ff;
+    }
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      background: #111;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -156,58 +115,55 @@
       <a href="#about">About</a>
       <a href="#services">Services</a>
       <a href="#gallery">Gallery</a>
+      <a href="#facilities">Facilities</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
 
   <section id="about">
-    <div class="card">
-      <h2>About Us</h2>
-      <p>Welcome to STUDIO SAVINRO — your creative hub for professional music production, recording, and mixing. We bring your sound to life with passion and perfection.</p>
-    </div>
+    <h2>About Us</h2>
+    <p>Welcome to STUDIO SAVINRO — your creative hub for professional music production, recording, and mixing. We bring your sound to life with passion and perfection.</p>
   </section>
 
   <section id="services">
-    <div class="card">
-      <h2>Our Services</h2>
-      <p>🎵 Professional Recording <br> 🎚️ Mixing & Mastering <br> 🎤 Vocal Tuning <br> 🎼 Music Composition</p>
-      <a href="#contact" class="btn">Book a Session</a>
-    </div>
+    <h2>Our Services</h2>
+    <p>🎵 Professional Recording <br> 🎚️ Mixing & Mastering <br> 🎤 Vocal Tuning <br> 🎼 Music Composition</p>
+    <a href="#contact" class="btn">Book a Session</a>
   </section>
 
   <section id="gallery">
-    <div class="card">
-      <h2>Gallery</h2>
-      <p>Our creative space and past projects will be showcased here.</p>
+    <h2>Gallery</h2>
+    <p>Our creative space and past projects will be showcased here.</p>
+  </section>
+
+  <section id="facilities">
+    <h2>Facilities & Accessibility</h2>
+    <div class="grid">
+      <div class="card"><div class="icon">♿</div>Assistive hearing loop</div>
+      <div class="card"><div class="icon">♿</div>Wheelchair-accessible car park</div>
+      <div class="card"><div class="icon">♿</div>Wheelchair-accessible entrance</div>
+      <div class="card"><div class="icon">♿</div>Wheelchair-accessible seating</div>
+      <div class="card"><div class="icon">♿</div>Wheelchair-accessible toilet</div>
+      <div class="card"><div class="icon">🎙️</div>On-site services</div>
+      <div class="card"><div class="icon">🚻</div>Gender-neutral toilets</div>
+      <div class="card"><div class="icon">📶</div>Free Wi-Fi</div>
+      <div class="card"><div class="icon">♻️</div>Electronics recycling</div>
+      <div class="card"><div class="icon">💳</div>Debit/Credit/NFC payments</div>
+      <div class="card"><div class="icon">👶</div>Good for kids</div>
+      <div class="card"><div class="icon">🅿️</div>Free multi-storey car park</div>
+      <div class="card"><div class="icon">🅿️</div>Free street parking</div>
+      <div class="card"><div class="icon">🅿️</div>Free parking lot</div>
     </div>
   </section>
 
   <section id="contact">
-    <div class="card">
-      <h2>Contact Us</h2>
-      <p>Email: <a href="mailto:studiosavinro@gmail.com">studiosavinro@gmail.com</a></p>
-      <p>Phone: +94 77 123 4567</p>
-    </div>
+    <h2>Contact Us</h2>
+    <p>Email: <a href="mailto:studiosavinro@gmail.com">studiosavinro@gmail.com</a></p>
+    <p>Phone: +94 77 123 4567</p>
   </section>
 
   <footer>
     &copy; 2025 STUDIO SAVINRO | All Rights Reserved
   </footer>
-
-  <script>
-    // Fade-in on scroll
-    const sections = document.querySelectorAll("section");
-    const revealOnScroll = () => {
-      const triggerBottom = window.innerHeight * 0.85;
-      sections.forEach(section => {
-        const sectionTop = section.getBoundingClientRect().top;
-        if (sectionTop < triggerBottom) {
-          section.classList.add("show");
-        }
-      });
-    };
-    window.addEventListener("scroll", revealOnScroll);
-    revealOnScroll();
-  </script>
 </body>
 </html>
